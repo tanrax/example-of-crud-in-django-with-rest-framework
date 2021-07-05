@@ -1,0 +1,4 @@
+django
+djangorestframework
+pytest-django
+pytest
