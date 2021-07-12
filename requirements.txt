@@ -2,3 +2,4 @@ django
 djangorestframework
 pytest-django
 pytest
+Faker
