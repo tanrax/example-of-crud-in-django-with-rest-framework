@@ -38,9 +38,11 @@ class LibrosDetails(APIView):
     def put(self, request, pk):
         libro = Libros.objects.filter(pk=pk).first()
         serializer = LibroSerializer(libro, data=request.data)
-        if libro and serializer.is_valid():
+        if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
+        elif not libro:
+            return Response(serializer.data, status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):

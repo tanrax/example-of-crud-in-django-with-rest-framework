@@ -1,4 +1,4 @@
-# tests/libros/test_create_model.py
+# tests/libros/test_model.py
 
 import pytest
 

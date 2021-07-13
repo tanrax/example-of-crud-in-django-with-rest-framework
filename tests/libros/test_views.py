@@ -2,6 +2,7 @@
 
 import pytest
 from app.libros.models import Libros
+from django.urls import reverse
 
 
 @pytest.mark.django_db
@@ -13,7 +14,7 @@ def test_add_book(client):
 
     # When
     resp = client.post(
-        "/api/libros/",
+        reverse("libros_list"),
         {
             "title": "El fin de la eternidad",
             "genre": "Ciencia Ficción",
@@ -43,7 +44,7 @@ def test_get_single_book(client):
     )
 
     # When
-    resp = client.get(f"/api/libros/{libro.id}/")
+    resp = client.get(reverse("libros_details", kwargs={"pk": libro.id}))
 
     # Then
     assert resp.status_code == 200
@@ -54,7 +55,7 @@ def test_get_single_book(client):
 def test_get_single_book_incorrect_id(client):
 
     # When
-    resp = client.get(f"/api/libros/-1/")
+    resp = client.get(reverse("libros_details", kwargs={"pk": 99}))
 
     # Then
     assert resp.status_code == 404
@@ -76,7 +77,7 @@ def test_get_all_books(client, faker):
     libro_2 = create_random_book()
 
     # When
-    resp = client.get(f"/api/libros/")
+    resp = client.get(reverse("libros_list"))
 
     # Then
     assert resp.status_code == 200
@@ -95,14 +96,14 @@ def test_remove_book(client):
         year="1955",
     )
     ## Check exist
-    resp_detail = client.get(f"/api/libros/{libro.id}/")
+    resp_detail = client.get(reverse("libros_details", kwargs={"pk": libro.id}))
     assert resp_detail.status_code == 200
     assert resp_detail.data["title"] == "El fin de la eternidad"
 
     # When
-    resp_delete = client.delete(f"/api/libros/{libro.id}/")
-    resp_list = client.get("/api/libros/")
-    rest_new_detail = client.get(f"/api/libros/{libro.id}/")
+    resp_delete = client.delete(reverse("libros_details", kwargs={"pk": libro.id}))
+    resp_list = client.get(reverse("libros_list"))
+    rest_new_detail = client.get(reverse("libros_details", kwargs={"pk": libro.id}))
 
     # Then
     ## Check status delete
@@ -128,7 +129,7 @@ def test_remove_book_incorrect_id(client):
     )
 
     # When
-    resp = client.delete(f"/api/movies/-1/")
+    resp = client.delete(reverse("libros_details", kwargs={"pk": 99}))
 
     # Then
     assert resp.status_code == 404
@@ -147,7 +148,7 @@ def test_update_book(client):
 
     # When
     resp = client.put(
-        f"/api/libros/{libro.id}/",
+        reverse("libros_details", kwargs={"pk": libro.id}),
         {
             "title": "Dune",
             "genre": "Ciencia Ficción",
@@ -164,7 +165,7 @@ def test_update_book(client):
     assert resp.data["author"] == "Frank Herbert"
     assert resp.data["year"] == "1965"
 
-    resp_detail = client.get(f"/api/libros/{libro.id}/")
+    resp_detail = client.get(reverse("libros_details", kwargs={"pk": libro.id}))
     assert resp_detail.status_code == 200
     assert resp_detail.data["title"] == "Dune"
     assert resp_detail.data["genre"] == "Ciencia Ficción"
@@ -174,7 +175,7 @@ def test_update_book(client):
 
 @pytest.mark.django_db
 def test_update_book_incorrect_id(client):
-    resp = client.put(f"/api/libros/-1/")
+    resp = client.put(reverse("libros_details", kwargs={"pk": 99}))
     assert resp.status_code == 404
 
 
@@ -190,7 +191,7 @@ def test_update_book_invalid_json(client):
 
     # When
     resp = client.put(
-        f"/api/libros/{libro.id}/",
+        reverse("libros_details", kwargs={"pk": libro.id}),
         {
             "foo": "Dune",
             "boo": "Ciencia Ficción",
