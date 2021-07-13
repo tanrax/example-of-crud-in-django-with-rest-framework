@@ -1,6 +1,7 @@
 import json
 from django.urls import reverse
 
+
 def test_ping(client):
     url = reverse("ping")
     response = client.get(url)

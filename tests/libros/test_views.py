@@ -20,7 +20,7 @@ def test_add_book(client):
             "author": "Isaac Asimov",
             "year": "1955",
         },
-        content_type="application/json"
+        content_type="application/json",
     )
 
     # Then
@@ -40,7 +40,7 @@ def test_get_single_book(client):
         genre="Ciencia Ficción",
         author="Isaac Asimov",
         year="1955",
-        )
+    )
 
     # When
     resp = client.get(f"/api/libros/{libro.id}/")
@@ -154,7 +154,7 @@ def test_update_book(client):
             "author": "Frank Herbert",
             "year": "1965",
         },
-        content_type="application/json"
+        content_type="application/json",
     )
 
     # Then
@@ -195,7 +195,7 @@ def test_update_book_invalid_json(client):
             "foo": "Dune",
             "boo": "Ciencia Ficción",
         },
-        content_type="application/json"
+        content_type="application/json",
     )
 
     # Then

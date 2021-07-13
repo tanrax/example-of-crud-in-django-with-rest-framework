@@ -2,6 +2,7 @@
 
 from app.libros.serializers import LibroSerializer
 
+
 def test_valid_libro_serializer():
     valid_serializer_data = {
         "title": "Raising Arizona",
