@@ -10,6 +10,6 @@ class LibroSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = (
             "id",
-            "created_date",
-            "updated_date",
+            "created_at",
+            "updated_at",
         )
