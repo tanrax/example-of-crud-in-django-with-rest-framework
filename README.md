@@ -5,7 +5,7 @@ All endpoints contain your test.
 ## Endpoints
 
 - /api/books	GET
-_ /api/books	POST
+- /api/books	POST
 - /api/books/:pk	GET
 - /api/books/:pk	DELETE
 - /api/books/:pk	PUT
@@ -23,4 +23,10 @@ python3 manage.py migrate
 
 ``` bash
 python3 manage.py runserver
+```
+
+## Test
+
+``` bash
+pytest
 ```
