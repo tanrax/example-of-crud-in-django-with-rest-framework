@@ -1,2 +1,2 @@
-python3 manage.py migrate
-python3 manage.py runscript create_books
+python manage.py migrate
+python manage.py runscript create_books
