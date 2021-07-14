@@ -1,5 +1,6 @@
-django
-djangorestframework
-pytest-django
-pytest
-Faker
+Django==3.2.5
+djangorestframework==3.12.4
+django-extensions==3.1.3
+Faker==8.10.1
+pytest==6.2.4
+pytest-django==4.4.0

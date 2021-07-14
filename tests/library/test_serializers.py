@@ -6,7 +6,7 @@ from app.library.serializers import BookSerializer
 def test_valid_libro_serializer():
     valid_serializer_data = {
         "title": "Raising Arizona",
-        "genre": "comedy",
+        "country": "eeuu",
         "year": "1987",
         "author": "Ray Bradbury",
     }
@@ -28,5 +28,5 @@ def test_invalid_libro_serializer():
     assert serializer.data == invalid_serializer_data
     assert serializer.errors == {
         "year": ["This field is required."],
-        "genre": ["This field is required."],
+        "country": ["This field is required."],
     }

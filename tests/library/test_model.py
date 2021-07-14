@@ -10,7 +10,7 @@ def test_book_model():
     ## Given
     book = Book(
         title="The foundation",
-        genre="Science fiction",
+        country="eeuu",
         year="1951",
         author="Isaac Asimov",
     )
@@ -20,7 +20,7 @@ def test_book_model():
 
     ## Then
     assert book.title == "The foundation"
-    assert book.genre == "Science fiction"
+    assert book.country == "eeuu"
     assert book.year == "1951"
     assert book.author == "Isaac Asimov"
     assert book.created_at

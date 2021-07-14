@@ -25,6 +25,12 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
+## Fake data
+
+``` bash
+python3 manage.py runscript create_books
+```
+
 ## Test
 
 ``` bash

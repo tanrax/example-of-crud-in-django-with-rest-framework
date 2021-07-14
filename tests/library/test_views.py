@@ -17,7 +17,7 @@ def test_add_book(client):
         reverse("book_list"),
         {
             "title": "The End of Eternity",
-            "genre": "Sciencie Fiction",
+            "country": "eeuu",
             "author": "Isaac Asimov",
             "year": "1955",
         },
@@ -38,7 +38,7 @@ def test_get_single_book(client):
     # Given
     book = Book.objects.create(
         title="The End of Eternity",
-        genre="Sciencie Fiction",
+        country="eeuu",
         author="Isaac Asimov",
         year="1955",
     )
@@ -68,7 +68,7 @@ def test_get_all_books(client, faker):
     def create_random_book():
         return Book.objects.create(
             title=faker.name(),
-            genre=faker.job(),
+            country=faker.country(),
             author=faker.name_nonbinary(),
             year=faker.year(),
         )
@@ -91,7 +91,7 @@ def test_remove_book(client):
     # Given
     book = Book.objects.create(
         title="The End of Eternity",
-        genre="Sciencie Fiction",
+        country="eeuu",
         author="Isaac Asimov",
         year="1955",
     )
@@ -123,7 +123,7 @@ def test_remove_book_incorrect_id(client):
     # Given
     book = Book.objects.create(
         title="The End of Eternity",
-        genre="Sciencie Fiction",
+        country="eeuu",
         author="Isaac Asimov",
         year="1955",
     )
@@ -141,7 +141,7 @@ def test_update_book(client):
     # Given
     book = Book.objects.create(
         title="The End of Eternity",
-        genre="Sciencie Fiction",
+        country="eeuu",
         author="Isaac Asimov",
         year="1955",
     )
@@ -151,7 +151,7 @@ def test_update_book(client):
         reverse("book_details", kwargs={"pk": book.id}),
         {
             "title": "Dune",
-            "genre": "Sciencie Fiction",
+            "country": "eeuu",
             "author": "Frank Herbert",
             "year": "1965",
         },
@@ -161,14 +161,14 @@ def test_update_book(client):
     # Then
     assert resp.status_code == 200
     assert resp.data["title"] == "Dune"
-    assert resp.data["genre"] == "Sciencie Fiction"
+    assert resp.data["country"] == "eeuu"
     assert resp.data["author"] == "Frank Herbert"
     assert resp.data["year"] == "1965"
 
     resp_detail = client.get(reverse("book_details", kwargs={"pk": book.id}))
     assert resp_detail.status_code == 200
     assert resp_detail.data["title"] == "Dune"
-    assert resp_detail.data["genre"] == "Sciencie Fiction"
+    assert resp_detail.data["country"] == "eeuu"
     assert resp_detail.data["author"] == "Frank Herbert"
     assert resp_detail.data["year"] == "1965"
 
@@ -184,7 +184,7 @@ def test_update_book_invalid_json(client):
     # Given
     book = Book.objects.create(
         title="The End of Eternity",
-        genre="Sciencie Fiction",
+        country="eeuu",
         author="Isaac Asimov",
         year="1955",
     )
