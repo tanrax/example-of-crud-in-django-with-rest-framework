@@ -1,6 +1,6 @@
-# tests/libros/test_serializers.py
+# tests/Library/test_serializers.py
 
-from app.libros.serializers import LibroSerializer
+from app.library.serializers import BookSerializer
 
 
 def test_valid_libro_serializer():
@@ -10,7 +10,7 @@ def test_valid_libro_serializer():
         "year": "1987",
         "author": "Ray Bradbury",
     }
-    serializer = LibroSerializer(data=valid_serializer_data)
+    serializer = BookSerializer(data=valid_serializer_data)
     assert serializer.is_valid()
     assert serializer.validated_data == valid_serializer_data
     assert serializer.data == valid_serializer_data
@@ -19,10 +19,10 @@ def test_valid_libro_serializer():
 
 def test_invalid_libro_serializer():
     invalid_serializer_data = {
-        "title": "Soy Leyenda",
+        "title": "I am legend",
         "author": "Richard Matheson",
     }
-    serializer = LibroSerializer(data=invalid_serializer_data)
+    serializer = BookSerializer(data=invalid_serializer_data)
     assert not serializer.is_valid()
     assert serializer.validated_data == {}
     assert serializer.data == invalid_serializer_data

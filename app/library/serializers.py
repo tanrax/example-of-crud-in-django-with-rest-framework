@@ -1,12 +1,12 @@
-# app/libros/serializers.py
+# app/Library/serializers.py
 
 from rest_framework import serializers
-from .models import Libros
+from .models import Book
 
 
-class LibroSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Libros
+        model = Book
         fields = "__all__"
         read_only_fields = (
             "id",
