@@ -2,13 +2,17 @@
 
 All endpoints contain your test.
 
-## Endpoints
+## Live Demo
 
-- /api/books	GET
-- /api/books	POST
-- /api/books/:pk	GET
-- /api/books/:pk	DELETE
-- /api/books/:pk	PUT
+### Get list
+
+### Get Detail
+
+### Create
+
+### Update
+
+### Delete
 
 ## Install
 
