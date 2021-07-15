@@ -104,7 +104,7 @@ Output
 ### Delete
 
 ``` shell
-curl -XDELETE https://example-of-crud-in-django-jrf.herokuapp.com/api/book/101/
+curl -XDELETE https://example-of-crud-in-django-jrf.herokuapp.com/api/book/1/
 ```
 
 Output
