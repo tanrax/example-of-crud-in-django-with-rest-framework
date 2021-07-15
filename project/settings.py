@@ -1,5 +1,7 @@
 from pathlib import Path
+import dj_database_url
 import django_heroku
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+j!b+4cv@q0$^$2%5o+&c&@!hf1bfgpl#f^71dfgzijt2fek9#"
+SECRET_KEY = "mysecret"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -65,12 +67,17 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": ":memory:",
+if environ.get("DATABASE_URL"):
+    DATABASES = {}
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+else:   
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "database.sqlite",
+        }
     }
-}
+
 
 
 # Password validation
