@@ -4,6 +4,8 @@ All endpoints contain your test.
 
 ## Live Demo
 
+https://example-of-crud-in-django-jrf.herokuapp.com/
+
 ### Get list
 
 ### Get Detail
