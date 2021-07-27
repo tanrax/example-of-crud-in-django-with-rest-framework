@@ -13,8 +13,9 @@ def run():
         books = json.loads(file_books.read())
 
     # Create books
-    for book in books:
+    for index, book in enumerate(books):
         Book(
+            id=index + 1,
             title=book['title'],
             author=book['author'],
             country=book['country'],
