@@ -13,7 +13,7 @@
 ### Get list
 
 ``` shell
-curl  https://example-of-crud-in-django-jrf.herokuapp.com/api/book/
+curl  localhost:8000/api/book/
 ```
 
 Output
@@ -44,7 +44,7 @@ Output
 ### Get Detail
 
 ``` shell
-curl https://example-of-crud-in-django-jrf.herokuapp.com/api/book/1/
+curl localhost:8000/api/book/1/
 ```
 
 Output
@@ -64,7 +64,7 @@ Output
 ### Create
 
 ``` shell
-curl -XPOST -H "Content-type: application/json" -d '{"title": "The foundation", "country": "eeuu", "author": "Isaac Asimov", "year": "1951"}' https://example-of-crud-in-django-jrf.herokuapp.com/api/book/
+curl -XPOST -H "Content-type: application/json" -d '{"title": "The foundation", "country": "eeuu", "author": "Isaac Asimov", "year": "1951"}' localhost:8000/api/book/
 ```
 
 Output
@@ -84,7 +84,7 @@ Output
 ### Update
 
 ``` shell
-curl -XPUT -H "Content-type: application/json" -d '{"title": "The End of Eternity", "country": "eeuu", "author": "Isaac Asimov", "year": "1955"}' https://example-of-crud-in-django-jrf.herokuapp.com/api/book/1/
+curl -XPUT -H "Content-type: application/json" -d '{"title": "The End of Eternity", "country": "eeuu", "author": "Isaac Asimov", "year": "1955"}' localhost:8000/api/book/1/
 ```
 
 Output
@@ -104,7 +104,7 @@ Output
 ### Delete
 
 ``` shell
-curl -XDELETE https://example-of-crud-in-django-jrf.herokuapp.com/api/book/1/
+curl -XDELETE localhost:8000/api/book/1/
 ```
 
 Output
@@ -124,7 +124,7 @@ Output
 ### Ping
 
 ``` shell
-curl https://example-of-crud-in-django-jrf.herokuapp.com/ping/
+curl localhost:8000/ping/
 ```
 
 Output
